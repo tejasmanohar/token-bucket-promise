@@ -1,0 +1,27 @@
+{
+  "name": "token-bucket-promise",
+  "version": "0.0.0",
+  "description": "promise-based token bucket filter for js/node",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/tejasmanohar/token-bucket-promise.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tejasmanohar/token-bucket-promise/issues"
+  },
+  "homepage": "https://github.com/tejasmanohar/token-bucket-promise",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.13.2"
+  },
+  "dependencies": {}
+}
