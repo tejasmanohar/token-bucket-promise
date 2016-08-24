@@ -2,6 +2,8 @@
  * Module dependencies.
  */
 
+import assert from 'assert';
+import delay from 'delay';
 import 'babel-polyfill';
 
 
@@ -16,11 +18,14 @@ class TokenBucketFilter {
    * @constructor
   */
   constructor(times, period=1000) {
-    this.tokens = 0;
-    this.bucketSize = times;
+    assert(times, 'You must specify `times` per `period` (defaults to 1000)');
 
+    this.tokenCount = 0;
+    this.bucketSize = times;
     this.refreshInterval = period/times;
-    setInterval(this._tick, this.refreshInterval)
+
+    const timer = setInterval(this._tick.bind(this), this.refreshInterval);
+    timer.unref();
   }
 
   /**
@@ -28,7 +33,7 @@ class TokenBucketFilter {
    * @access protected
   */
   _tick() {
-    this.tokens = Math.min(this.bucketSize, this.tokens + 1);
+    this.tokenCount = Math.max(this.bucketSize, this.tokenCount + 1);
   }
 
   /**
@@ -37,11 +42,11 @@ class TokenBucketFilter {
    * @returns Promise
   */
   async take() {
-    while (this.tokens === 0) {
-      await Promise.delay(this.refreshInterval);
+    while (this.tokenCount === 0) {
+      await delay(this.refreshInterval);
     }
 
-    this.tokens = Math.max(this.tokens - 1, 0);
+    this.tokenCount = Math.max(this.tokenCount - 1, 0);
   }
 }
 
