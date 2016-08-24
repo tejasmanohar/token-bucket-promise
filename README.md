@@ -14,7 +14,7 @@ const request = require('request-promise');
 
 function makeRequest() {
   tbf.acquire().then(function() {
-    return http.get(/* ... */)
+    return request.get(/* ... */)
   });
 }
 ```
