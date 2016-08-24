@@ -2,6 +2,8 @@
 
 promise-based token bucket filter implementation for node.js
 
+`npm install token-bucket-promise`
+
 # usage
 
 ```js
