@@ -20,10 +20,10 @@
     "babel-cli": "^6.11.4",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
-    "babel-polyfill": "^6.13.0",
     "babel-preset-es2015": "^6.13.2"
   },
   "dependencies": {
+    "babel-polyfill": "^6.13.0",
     "delay": "^1.3.1"
   }
 }
